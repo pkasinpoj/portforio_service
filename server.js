@@ -9,7 +9,6 @@ const app = express();
 // creating the middleware
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cors());
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -20,6 +19,8 @@ app.use(function (req, res, next) {
   );
   next();
 });
+
+app.use(cors());
 // app.use(
 //   cors({
 //     origin: ["https://portfolioview-colon007march.vercel.app/"],
