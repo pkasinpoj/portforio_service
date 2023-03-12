@@ -6,11 +6,7 @@ const contactRoute = require("./route/contactRoute");
 const bodyParser = require("body-parser");
 const app = express();
 
-app.use(
-  cors({
-    origin: "*",
-  })
-);
+app.use(cors());
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "DELETE, PUT, GET, POST");
@@ -20,35 +16,11 @@ app.use(function (req, res, next) {
   );
   next();
 });
+
 // creating the middleware
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// app.use(
-//   cors({
-//     origin: ["https://portfolioview-colon007march.vercel.app/"],
-//     methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
-//   })
-// );
-// app.use(function (req, res, next) {
-//   res.setHeader(
-//     "Access-Control-Allow-Origin",
-//     "https://portfolioview-colon007march.vercel.app/"
-//   );
-//   res.setHeader(
-//     "Access-Control-Allow-Methods",
-//     "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-//   );
-//   res.setHeader(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content-Type, Accept,accesstoken"
-//   );
-//   res.setHeader("Access-Control-Allow-Credentials", true);
-//   next();
-// });
-// app.get("/", (req, res) => {
-//   res.send("Access denied!");
-// });
 app.use("/", contactRoute);
 // app.use("/contact", contactRoute);
 if (process.env.NODE_ENV === "production") {
