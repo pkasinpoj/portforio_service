@@ -6,6 +6,7 @@ const contactRoute = require("./route/contactRoute");
 const bodyParser = require("body-parser");
 const app = express();
 
+app.use(cors());
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "DELETE, PUT, GET, POST");
@@ -19,7 +20,6 @@ app.use(function (req, res, next) {
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(cors());
 // app.use(
 //   cors({
 //     origin: ["https://portfolioview-colon007march.vercel.app/"],
